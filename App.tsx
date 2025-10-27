@@ -1,20 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import HomeScreen from "./src/screens/HomeScreen";
+import AvailabilitiesScreen from "./src/screens/AvailabilitiesScreen";
+import ConfirmationScreen from "./src/screens/ConfirmationScreen";
+import MotivesScreen from "./src/screens/MotivesScreen";
+
+export type RootStackParamList = {
+  Home: undefined;
+  Motives: undefined;
+  Availabilities: { motive: string };
+  Confirmation: { slot: string; motive: string };
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Motives" component={MotivesScreen} />
+        <Stack.Screen name="Availabilities" component={AvailabilitiesScreen} />
+        <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
