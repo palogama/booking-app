@@ -4,7 +4,7 @@ import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../App";
 import CancelBookingButton from "../components/cancelBookingButton";
-import { commonStyles as styles } from "../styles/global";
+import { styles } from "../styles/global";
 
 type AvailabilitiesScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -64,18 +64,21 @@ export default function AvailabilitiesScreen() {
   }, [slots]);
 
   return (
-    <View style={styles.container}>
+    <View style={styles.layout.container}>
       <FlatList
         data={grouped}
         keyExtractor={([day]) => day}
         renderItem={({ item: [day, daySlots] }) => (
-          <View style={styles.dayContainer}>
-            <Text style={styles.dayTitle}>{day}</Text>
-            <View style={styles.slotsContainer}>
+          <View style={styles.availabilities.dayContainer}>
+            <Text style={styles.availabilities.dayTitle}>{day}</Text>
+            <View style={styles.availabilities.slotsContainer}>
               {daySlots.map((slot) => (
                 <TouchableOpacity
                   key={slot.id}
-                  style={[styles.slot, !slot.available && styles.disabledSlot]}
+                  style={[
+                    styles.availabilities.slot,
+                    !slot.available && styles.availabilities.disabledSlot,
+                  ]}
                   disabled={!slot.available}
                   onPress={() =>
                     navigation.navigate("ConfirmBooking", {
@@ -85,7 +88,7 @@ export default function AvailabilitiesScreen() {
                     })
                   }
                 >
-                  <Text style={styles.slotText}>
+                  <Text style={styles.availabilities.slotText}>
                     {new Date(slot.datetime).toLocaleTimeString("en-US", {
                       timeZone: "Europe/Brussels",
                       hour: "2-digit",
@@ -100,7 +103,7 @@ export default function AvailabilitiesScreen() {
         )}
       />
 
-      <View style={styles.footerButtons}>
+      <View style={styles.button.footerButtons}>
         <Button title="Go back" onPress={() => navigation.goBack()} />
         <CancelBookingButton />
       </View>

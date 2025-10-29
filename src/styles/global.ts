@@ -1,64 +1,25 @@
 
 import { StyleSheet } from "react-native";
+import { layoutStyles } from "./layoutStyles";
+import { textStyles } from "./textStyles";
+import { modalStyles } from "./modalStyles";
+import { buttonStyles } from "./buttonStyles";
+import { availabilitiesStyles } from "./availabilitiesStyles";
+
+
+
+export const styles = {
+  layout: layoutStyles,
+  text: textStyles,
+  modal: modalStyles,
+  button: buttonStyles,
+  availabilities: availabilitiesStyles,
+};
 
 export const commonStyles = StyleSheet.create({
-    dropdownButton: {
-  backgroundColor: "#e0e0e0",
-  padding: 12,
-  borderRadius: 8,
-  marginBottom: 15,
-},
-dropdownText: { fontSize: 16 },
+    
 
-modalOverlay: {
-  flex: 1,
-  backgroundColor: "rgba(0,0,0,0.4)",
-  justifyContent: "center",
-  alignItems: "center",
-},
-modalContent: {
-  backgroundColor: "white",
-  width: "80%",
-  borderRadius: 10,
-  paddingVertical: 10,
-  maxHeight: "60%",
-},
-modalItem: {
-  paddingVertical: 12,
-  paddingHorizontal: 20,
-  borderBottomWidth: 1,
-  borderBottomColor: "#ddd",
-},
-modalText: { fontSize: 16 },
-modalTextWhite: { fontSize: 16, color: "white" },
-modalClose: {
-  backgroundColor: "#2196F3",
-  margin: 15,
-  borderRadius: 8,
-  paddingVertical: 10,
-  alignItems: "center",
-},
 
-  containerCenter: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  mainTitle: {
-    fontSize: 26,
-    marginBottom: 20,
-    textAlign: "center",
-  },
-   container: {
-    flex: 1,
-    padding: 20,
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 22,
-    marginBottom: 10,
-    textAlign: "center",
-  },
   item: {
     backgroundColor: "#f0f0f0",
     padding: 15,
@@ -68,35 +29,5 @@ modalClose: {
   text: {
     fontSize: 18,
   },
-  footerButtons: {
-    marginTop: 20,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  button: {
-    backgroundColor: "#007AFF",
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 8,
-  },
-  buttonText: {
-    color: "white",
-    fontSize: 16,
-    fontWeight: "600",
-  },
 
-dayContainer: { marginBottom: 20 },
-dayTitle: { fontSize: 18, fontWeight: "bold", marginBottom: 8 },
-slotsContainer: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
-slot: {
-  backgroundColor: "#d0f0d0",
-  padding: 8,
-  borderRadius: 6,
-},
-disabledSlot: {
-  backgroundColor: "#f0f0f0",
-  opacity: 0.5,
-},
-slotText: { fontSize: 14 },
 });

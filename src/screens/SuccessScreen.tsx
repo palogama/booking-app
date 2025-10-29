@@ -4,6 +4,7 @@ import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { RootStackParamList } from "../../App";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import Summary from "../components/summary";
+import { styles } from "../styles/global";
 
 type SuccessScreenRouteProp = RouteProp<RootStackParamList, "Success">;
 
@@ -18,8 +19,8 @@ export default function SuccessScreen() {
   const { site, slot, motive } = route.params;
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>You have booked:</Text>
+    <View style={styles.layout.container}>
+      <Text style={styles.text.title}>You have booked:</Text>
       <Summary site={site} slot={slot} motive={motive} />
       <Button
         title="Back to Home"
@@ -28,9 +29,3 @@ export default function SuccessScreen() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
-  text: { fontSize: 18 },
-  slot: { fontSize: 22, fontWeight: "bold", marginVertical: 10 },
-});

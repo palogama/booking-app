@@ -5,7 +5,7 @@ import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../../App";
 import { mock } from "../data/mock";
 import CancelBookingButton from "../components/cancelBookingButton";
-import { commonStyles as styles } from "../styles/global"; // ⬅️ centralized styles
+import { styles } from "../styles/global";
 
 type MotivesScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -16,23 +16,23 @@ export default function MotivesScreen() {
   const navigation = useNavigation<MotivesScreenNavigationProp>();
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Select your reason for visit</Text>
+    <View style={styles.layout.container}>
+      <Text style={styles.text.title}>Select your reason for visit</Text>
 
       <FlatList
         data={mock.motives}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <TouchableOpacity
-            style={styles.item}
+            style={styles.layout.item}
             onPress={() => navigation.navigate("Sites", { motive: item })}
           >
-            <Text style={styles.text}>{item.name}</Text>
+            <Text style={styles.text.text}>{item.name}</Text>
           </TouchableOpacity>
         )}
       />
 
-      <View style={styles.footerButtons}>
+      <View style={styles.button.footerButtons}>
         <Button title="Go back" onPress={() => navigation.goBack()} />
         <CancelBookingButton />
       </View>

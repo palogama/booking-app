@@ -13,7 +13,7 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../App";
 import { mock } from "../data/mock";
 import CancelBookingButton from "../components/cancelBookingButton";
-import { commonStyles as styles } from "../styles/global";
+import { styles } from "../styles/global";
 
 type SitesScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -42,39 +42,39 @@ export default function SitesScreen() {
   }, [selectedCity]);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Choose your practice location</Text>
+    <View style={styles.layout.container}>
+      <Text style={styles.text.title}>Choose your practice location</Text>
 
       {/* City filter dropdown */}
       <TouchableOpacity
-        style={styles.dropdownButton}
+        style={styles.modal.dropdownButton}
         onPress={() => setModalVisible(true)}
       >
-        <Text style={styles.dropdownText}>City: {selectedCity}</Text>
+        <Text style={styles.modal.dropdownText}>City: {selectedCity}</Text>
       </TouchableOpacity>
 
       <Modal visible={modalVisible} transparent animationType="slide">
-        <View style={styles.modalOverlay}>
-          <View style={styles.modalContent}>
+        <View style={styles.modal.modalOverlay}>
+          <View style={styles.modal.modalContent}>
             <ScrollView>
               {cities.map((city) => (
                 <TouchableOpacity
                   key={city}
-                  style={styles.modalItem}
+                  style={styles.modal.modalItem}
                   onPress={() => {
                     setSelectedCity(city);
                     setModalVisible(false);
                   }}
                 >
-                  <Text style={styles.modalText}>{city}</Text>
+                  <Text style={styles.modal.modalText}>{city}</Text>
                 </TouchableOpacity>
               ))}
             </ScrollView>
             <TouchableOpacity
-              style={styles.modalClose}
+              style={styles.modal.modalClose}
               onPress={() => setModalVisible(false)}
             >
-              <Text style={styles.modalTextWhite}>Close</Text>
+              <Text style={styles.modal.modalTextWhite}>Close</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -85,17 +85,17 @@ export default function SitesScreen() {
         keyExtractor={(item) => item.name}
         renderItem={({ item }) => (
           <TouchableOpacity
-            style={styles.item}
+            style={styles.modal.item}
             onPress={() =>
               navigation.navigate("Availabilities", { motive, site: item })
             }
           >
-            <Text style={styles.text}>{item.name}</Text>
+            <Text style={styles.modal.text}>{item.name}</Text>
           </TouchableOpacity>
         )}
       />
 
-      <View style={styles.footerButtons}>
+      <View style={styles.button.footerButtons}>
         <Button title="Go back" onPress={() => navigation.goBack()} />
         <CancelBookingButton />
       </View>

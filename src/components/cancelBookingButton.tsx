@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, CommonActions } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import CancelBookingModal from "./cancelBookingModal";
 import { RootStackParamList } from "../../App";
@@ -15,6 +15,16 @@ const CancelBookingButton: React.FC<{
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
+  const handleConfirm = () => {
+    setModalVisible(false);
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [{ name: "Home" }],
+      })
+    );
+  };
+
   return (
     <>
       <Button
@@ -25,10 +35,7 @@ const CancelBookingButton: React.FC<{
       <CancelBookingModal
         visible={modalVisible}
         onCancel={() => setModalVisible(false)}
-        onConfirm={() => {
-          setModalVisible(false);
-          navigation.navigate("Home"); // always navigate to Home
-        }}
+        onConfirm={handleConfirm}
       />
     </>
   );

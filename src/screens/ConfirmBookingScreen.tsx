@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, Text, Button } from "react-native";
-import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
+import {
+  RouteProp,
+  useNavigation,
+  useRoute,
+  CommonActions,
+} from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../App";
 import Summary from "../components/summary";
 import CancelBookingButton from "../components/cancelBookingButton";
-import { commonStyles as styles } from "../styles/global";
+import { styles } from "../styles/global";
 
 type ConfirmBookingScreenRouteProp = RouteProp<
   RootStackParamList,
@@ -21,16 +26,22 @@ export default function ConfirmBookingScreen() {
   const navigation = useNavigation<ConfirmBookingScreenNavigationProp>();
   const { site, slot, motive } = route.params;
 
+  const handleConfirm = () => {
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [{ name: "Success", params: { slot, motive, site } }],
+      })
+    );
+  };
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>You're about to book:</Text>
+    <View style={styles.layout.container}>
+      <Text style={styles.text.title}>You're about to book:</Text>
       <Summary site={site} slot={slot} motive={motive} />
 
-      <View style={styles.footerButtons}>
-        <Button
-          title="CONFIRM"
-          onPress={() => navigation.navigate("Success", { slot, motive, site })}
-        />
+      <View style={styles.button.footerButtons}>
+        <Button title="CONFIRM" onPress={handleConfirm} />
         <CancelBookingButton />
       </View>
     </View>
