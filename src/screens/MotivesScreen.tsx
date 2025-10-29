@@ -1,16 +1,11 @@
 import React from "react";
-import {
-  View,
-  Text,
-  FlatList,
-  TouchableOpacity,
-  StyleSheet,
-  Button,
-} from "react-native";
+import { View, Text, FlatList, TouchableOpacity, Button } from "react-native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../../App";
 import { mock } from "../data/mock";
+import CancelBookingButton from "../components/cancelBookingButton";
+import { commonStyles as styles } from "../styles/global"; // ⬅️ centralized styles
 
 type MotivesScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -36,19 +31,11 @@ export default function MotivesScreen() {
           </TouchableOpacity>
         )}
       />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+
+      <View style={styles.footerButtons}>
+        <Button title="Go back" onPress={() => navigation.goBack()} />
+        <CancelBookingButton />
+      </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20 },
-  title: { fontSize: 22, marginBottom: 5 },
-  item: {
-    backgroundColor: "#f0f0f0",
-    padding: 15,
-    marginVertical: 6,
-    borderRadius: 10,
-  },
-  text: { fontSize: 18 },
-});

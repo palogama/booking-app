@@ -1,15 +1,16 @@
-import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { View, Text, Button } from "react-native";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
-import { RootStackParamList } from "../../App";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "../../App";
 import Summary from "../components/summary";
+import CancelBookingButton from "../components/cancelBookingButton";
+import { commonStyles as styles } from "../styles/global";
 
 type ConfirmBookingScreenRouteProp = RouteProp<
   RootStackParamList,
   "ConfirmBooking"
 >;
-
 type ConfirmBookingScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   "ConfirmBooking"
@@ -25,22 +26,13 @@ export default function ConfirmBookingScreen() {
       <Text style={styles.text}>You're about to book:</Text>
       <Summary site={site} slot={slot} motive={motive} />
 
-      <Button
-        title="CONFIRM"
-        onPress={() =>
-          navigation.navigate("Success", {
-            slot: route.params.slot,
-            motive: route.params.motive,
-            site: route.params.site,
-          })
-        }
-      />
+      <View style={styles.footerButtons}>
+        <Button
+          title="CONFIRM"
+          onPress={() => navigation.navigate("Success", { slot, motive, site })}
+        />
+        <CancelBookingButton />
+      </View>
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
-  text: { fontSize: 18 },
-  slot: { fontSize: 22, fontWeight: "bold", marginVertical: 10 },
-});
