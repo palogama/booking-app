@@ -3,24 +3,24 @@ import { View, Text, Button, StyleSheet } from "react-native";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { RootStackParamList } from "../../App";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import Summary from "../components/summary";
 
-type ConfirmationScreenRouteProp = RouteProp<
+type SuccessScreenRouteProp = RouteProp<RootStackParamList, "Success">;
+
+type SuccessScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
-  "Confirmation"
->;
-type ConfirmationScreenNavigationProp = NativeStackNavigationProp<
-  RootStackParamList,
-  "Confirmation"
+  "Success"
 >;
 
-export default function ConfirmationScreen() {
-  const route = useRoute<ConfirmationScreenRouteProp>();
-  const navigation = useNavigation<ConfirmationScreenNavigationProp>();
+export default function SuccessScreen() {
+  const route = useRoute<SuccessScreenRouteProp>();
+  const navigation = useNavigation<SuccessScreenNavigationProp>();
+  const { site, slot, motive } = route.params;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>You booked:</Text>
-      <Text style={styles.slot}>{route.params.slot}</Text>
+      <Text style={styles.text}>You have booked:</Text>
+      <Summary site={site} slot={slot} motive={motive} />
       <Button
         title="Back to Home"
         onPress={() => navigation.navigate("Home")}

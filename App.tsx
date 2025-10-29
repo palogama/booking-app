@@ -2,15 +2,20 @@ import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import HomeScreen from "./src/screens/HomeScreen";
-import AvailabilitiesScreen from "./src/screens/AvailabilitiesScreen";
-import ConfirmationScreen from "./src/screens/ConfirmationScreen";
 import MotivesScreen from "./src/screens/MotivesScreen";
+import SitesScreen from "./src/screens/SitesScreen";
+import AvailabilitiesScreen from "./src/screens/AvailabilitiesScreen";
+import ConfirmBookingScreen from "./src/screens/ConfirmBookingScreen";
+import SuccessScreen from "./src/screens/SuccessScreen";
+import { Motive, ConsultationSite } from "./src/data/mock";
 
 export type RootStackParamList = {
   Home: undefined;
   Motives: undefined;
-  Availabilities: { motive: string };
-  Confirmation: { slot: string; motive: string };
+  Sites: { motive: Motive };
+  Availabilities: { motive: Motive; site: ConsultationSite };
+  ConfirmBooking: { slot: string; motive: Motive; site: ConsultationSite };
+  Success: { slot: string; motive: Motive; site: ConsultationSite };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -18,11 +23,18 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
         <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Sites" component={SitesScreen} />
         <Stack.Screen name="Motives" component={MotivesScreen} />
         <Stack.Screen name="Availabilities" component={AvailabilitiesScreen} />
-        <Stack.Screen name="Confirmation" component={ConfirmationScreen} />
+        <Stack.Screen name="ConfirmBooking" component={ConfirmBookingScreen} />
+        <Stack.Screen name="Success" component={SuccessScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

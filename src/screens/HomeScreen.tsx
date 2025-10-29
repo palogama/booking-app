@@ -14,9 +14,9 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Dr. Antoine Pairet</Text>
+      <Text style={styles.title}>Book your appointment</Text>
       <Button
-        title="See availabilities"
+        title="Start booking"
         onPress={() => navigation.navigate("Motives")}
       />
     </View>
@@ -24,6 +24,10 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center", alignItems: "center" },
-  title: { fontSize: 24, marginBottom: 20 },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  title: { fontSize: 24, marginBottom: 20, textAlign: "center" },
 });
