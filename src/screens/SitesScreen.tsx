@@ -53,6 +53,33 @@ export default function SitesScreen() {
         <Text style={styles.dropdownText}>City: {selectedCity}</Text>
       </TouchableOpacity>
 
+      <Modal visible={modalVisible} transparent animationType="slide">
+        <View style={styles.modalOverlay}>
+          <View style={styles.modalContent}>
+            <ScrollView>
+              {cities.map((city) => (
+                <TouchableOpacity
+                  key={city}
+                  style={styles.modalItem}
+                  onPress={() => {
+                    setSelectedCity(city);
+                    setModalVisible(false);
+                  }}
+                >
+                  <Text style={styles.modalText}>{city}</Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+            <TouchableOpacity
+              style={styles.modalClose}
+              onPress={() => setModalVisible(false)}
+            >
+              <Text style={styles.modalTextWhite}>Close</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
+
       <FlatList
         data={filteredSites}
         keyExtractor={(item) => item.name}

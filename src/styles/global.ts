@@ -2,6 +2,43 @@
 import { StyleSheet } from "react-native";
 
 export const commonStyles = StyleSheet.create({
+    dropdownButton: {
+  backgroundColor: "#e0e0e0",
+  padding: 12,
+  borderRadius: 8,
+  marginBottom: 15,
+},
+dropdownText: { fontSize: 16 },
+
+modalOverlay: {
+  flex: 1,
+  backgroundColor: "rgba(0,0,0,0.4)",
+  justifyContent: "center",
+  alignItems: "center",
+},
+modalContent: {
+  backgroundColor: "white",
+  width: "80%",
+  borderRadius: 10,
+  paddingVertical: 10,
+  maxHeight: "60%",
+},
+modalItem: {
+  paddingVertical: 12,
+  paddingHorizontal: 20,
+  borderBottomWidth: 1,
+  borderBottomColor: "#ddd",
+},
+modalText: { fontSize: 16 },
+modalTextWhite: { fontSize: 16, color: "white" },
+modalClose: {
+  backgroundColor: "#2196F3",
+  margin: 15,
+  borderRadius: 8,
+  paddingVertical: 10,
+  alignItems: "center",
+},
+
   containerCenter: {
     flex: 1,
     justifyContent: "center",
@@ -48,13 +85,7 @@ export const commonStyles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
   },
-  dropdownButton: {
-  backgroundColor: "#e0e0e0",
-  padding: 12,
-  borderRadius: 8,
-  marginBottom: 15,
-},
-dropdownText: { fontSize: 16 },
+
 dayContainer: { marginBottom: 20 },
 dayTitle: { fontSize: 18, fontWeight: "bold", marginBottom: 8 },
 slotsContainer: { flexDirection: "row", flexWrap: "wrap", gap: 8 },
