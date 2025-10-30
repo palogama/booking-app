@@ -22,8 +22,12 @@ export default function AvailabilitiesScreen() {
 
   // Generate 14 days of 30-min slots
   const slots = useMemo(() => {
-    const generated: { id: string; datetime: string; available: boolean }[] =
-      [];
+    const generated: {
+      id: string;
+      datetime: string;
+      datetimeLocale: string;
+      available: boolean;
+    }[] = [];
     const now = new Date();
     now.setHours(8, 0, 0, 0);
 
@@ -42,6 +46,11 @@ export default function AvailabilitiesScreen() {
           generated.push({
             id: slot.toISOString(),
             datetime: slot.toISOString(),
+            datetimeLocale: slot.toLocaleString("en-US", {
+              timeZone: "Europe/Brussels",
+
+              hour12: false,
+            }),
             available: !unavailable,
           });
         }
@@ -82,7 +91,7 @@ export default function AvailabilitiesScreen() {
                   disabled={!slot.available}
                   onPress={() =>
                     navigation.navigate("ConfirmBooking", {
-                      slot: slot.datetime,
+                      slot: slot.datetimeLocale,
                       motive,
                       site,
                     })
