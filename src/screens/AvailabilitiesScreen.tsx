@@ -3,7 +3,7 @@ import { View, Text, FlatList, TouchableOpacity, Button } from "react-native";
 import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../App";
-import CancelBookingButton from "../components/cancelBookingButton";
+import NavigationButtons from "../components/NavigationButtons";
 import { styles } from "../styles/global";
 
 type AvailabilitiesScreenNavigationProp = NativeStackNavigationProp<
@@ -65,6 +65,8 @@ export default function AvailabilitiesScreen() {
 
   return (
     <View style={styles.layout.container}>
+      <Text style={styles.text.title}>Choose the time of your appointment</Text>
+
       <FlatList
         data={grouped}
         keyExtractor={([day]) => day}
@@ -103,10 +105,7 @@ export default function AvailabilitiesScreen() {
         )}
       />
 
-      <View style={styles.button.footerButtons}>
-        <Button title="Go back" onPress={() => navigation.goBack()} />
-        <CancelBookingButton />
-      </View>
+      <NavigationButtons />
     </View>
   );
 }

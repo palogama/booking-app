@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, Button, TouchableOpacity } from "react-native";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { RootStackParamList } from "../../App";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -20,12 +20,18 @@ export default function SuccessScreen() {
 
   return (
     <View style={styles.layout.container}>
-      <Text style={styles.text.title}>You have booked:</Text>
+      <View>
+        <Text style={styles.text.title}>You have booked:</Text>
+      </View>
+
       <Summary site={site} slot={slot} motive={motive} />
-      <Button
-        title="Back to Home"
+
+      <TouchableOpacity
+        style={[styles.button.confirmButton]}
         onPress={() => navigation.navigate("Home")}
-      />
+      >
+        <Text style={styles.button.text}>Back to Home</Text>
+      </TouchableOpacity>
     </View>
   );
 }

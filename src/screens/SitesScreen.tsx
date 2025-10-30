@@ -12,7 +12,7 @@ import { useNavigation, useRoute, RouteProp } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../App";
 import { mock } from "../data/mock";
-import CancelBookingButton from "../components/cancelBookingButton";
+import NavigationButtons from "../components/NavigationButtons";
 import { styles } from "../styles/global";
 
 type SitesScreenNavigationProp = NativeStackNavigationProp<
@@ -95,10 +95,7 @@ export default function SitesScreen() {
         )}
       />
 
-      <View style={styles.button.footerButtons}>
-        <Button title="Go back" onPress={() => navigation.goBack()} />
-        <CancelBookingButton />
-      </View>
+      <NavigationButtons />
     </View>
   );
 }

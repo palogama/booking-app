@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../App";
 import { useNavigation } from "@react-navigation/native";
@@ -16,10 +16,12 @@ export default function HomeScreen() {
   return (
     <View style={styles.layout.containerCenter}>
       <Text style={styles.text.mainTitle}>Book your appointment</Text>
-      <Button
-        title="Start booking"
+      <TouchableOpacity
+        style={[styles.button.startButton]}
         onPress={() => navigation.navigate("Motives")}
-      />
+      >
+        <Text style={styles.button.text}>Start booking</Text>
+      </TouchableOpacity>
     </View>
   );
 }

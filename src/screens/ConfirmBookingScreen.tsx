@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Button } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import {
   RouteProp,
   useNavigation,
@@ -9,8 +9,8 @@ import {
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../App";
 import Summary from "../components/summary";
-import CancelBookingButton from "../components/cancelBookingButton";
 import { styles } from "../styles/global";
+import NavigationButtons from "../components/NavigationButtons";
 
 type ConfirmBookingScreenRouteProp = RouteProp<
   RootStackParamList,
@@ -37,12 +37,23 @@ export default function ConfirmBookingScreen() {
 
   return (
     <View style={styles.layout.container}>
+      <View>
+        <Text style={styles.text.confirm}>
+          You've been assigned a practitioner for your appointment.
+        </Text>
+      </View>
       <Text style={styles.text.title}>You're about to book:</Text>
       <Summary site={site} slot={slot} motive={motive} />
 
-      <View style={styles.button.footerButtons}>
-        <Button title="CONFIRM" onPress={handleConfirm} />
-        <CancelBookingButton />
+      <TouchableOpacity
+        style={[styles.button.confirmButton]}
+        onPress={handleConfirm}
+      >
+        <Text style={styles.button.text}>Confirm</Text>
+      </TouchableOpacity>
+
+      <View style={styles.layout.footer}>
+        <NavigationButtons />
       </View>
     </View>
   );

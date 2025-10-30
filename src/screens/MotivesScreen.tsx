@@ -4,8 +4,8 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
 import { RootStackParamList } from "../../App";
 import { mock } from "../data/mock";
-import CancelBookingButton from "../components/cancelBookingButton";
 import { styles } from "../styles/global";
+import NavigationButtons from "../components/NavigationButtons";
 
 type MotivesScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
@@ -32,9 +32,8 @@ export default function MotivesScreen() {
         )}
       />
 
-      <View style={styles.button.footerButtons}>
-        <Button title="Go back" onPress={() => navigation.goBack()} />
-        <CancelBookingButton />
+      <View style={styles.layout.footer}>
+        <NavigationButtons />
       </View>
     </View>
   );

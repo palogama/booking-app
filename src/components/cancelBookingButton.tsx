@@ -1,17 +1,16 @@
 import React, { useState } from "react";
-import { Button } from "react-native";
+import { TouchableOpacity, Text, StyleSheet } from "react-native";
 import { useNavigation, CommonActions } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import CancelBookingModal from "./cancelBookingModal";
 import { RootStackParamList } from "../../App";
+import { styles } from "../styles/global";
+import CancelBookingModal from "./CancelBookingModal";
 
 const CancelBookingButton: React.FC<{
   buttonTitle?: string;
-  buttonColor?: string;
-}> = ({ buttonTitle = "Cancel booking", buttonColor = "#FF3B30" }) => {
+}> = () => {
   const [modalVisible, setModalVisible] = useState(false);
 
-  // useNavigation directly inside the component
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
@@ -27,11 +26,13 @@ const CancelBookingButton: React.FC<{
 
   return (
     <>
-      <Button
-        title={buttonTitle}
-        color={buttonColor}
+      <TouchableOpacity
+        style={[styles.button.buttonCancel]}
         onPress={() => setModalVisible(true)}
-      />
+      >
+        <Text style={styles.button.text}>Cancel booking</Text>
+      </TouchableOpacity>
+
       <CancelBookingModal
         visible={modalVisible}
         onCancel={() => setModalVisible(false)}

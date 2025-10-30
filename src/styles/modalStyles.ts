@@ -3,8 +3,8 @@ import { StyleSheet } from "react-native";
 
 export const modalStyles = StyleSheet.create({
 
-    dropdownButton: {
-  backgroundColor: "#999999ff",
+  dropdownButton: {
+  backgroundColor: "#f394acff",
   padding: 12,
   borderRadius: 8,
   marginBottom: 15,
@@ -33,7 +33,7 @@ modalItem: {
 modalText: { fontSize: 16 },
 modalTextWhite: { fontSize: 16, color: "white" },
 modalClose: {
-  backgroundColor: "#2196F3",
+  backgroundColor: "#88354A",
   margin: 15,
   borderRadius: 8,
   paddingVertical: 10,

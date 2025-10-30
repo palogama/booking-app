@@ -16,18 +16,4 @@ export const styles = {
   availabilities: availabilitiesStyles,
 };
 
-export const commonStyles = StyleSheet.create({
-    
 
-
-  item: {
-    backgroundColor: "#f0f0f0",
-    padding: 15,
-    marginVertical: 6,
-    borderRadius: 10,
-  },
-  text: {
-    fontSize: 18,
-  },
-
-});
