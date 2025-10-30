@@ -3,7 +3,7 @@ import { View, Text, Button, TouchableOpacity } from "react-native";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { RootStackParamList } from "../../App";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import Summary from "../components/summary";
+import Summary from "../components/Summary";
 import { styles } from "../styles/global";
 
 type SuccessScreenRouteProp = RouteProp<RootStackParamList, "Success">;
@@ -20,9 +20,7 @@ export default function SuccessScreen() {
 
   return (
     <View style={styles.layout.container}>
-      <View>
-        <Text style={styles.text.title}>You have booked:</Text>
-      </View>
+      <Text style={styles.text.title}>You have booked:</Text>
 
       <Summary site={site} slot={slot} motive={motive} />
 

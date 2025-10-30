@@ -31,9 +31,9 @@ modalItem: {
   borderBottomColor: "#ddd",
 },
 modalText: { fontSize: 16 },
-modalTextWhite: { fontSize: 16, color: "white" },
+modalTextClose: { fontSize: 16, color: "#88354A" },
 modalClose: {
-  backgroundColor: "#88354A",
+  backgroundColor: "white",
   margin: 15,
   borderRadius: 8,
   paddingVertical: 10,

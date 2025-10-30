@@ -20,8 +20,6 @@ export default function AvailabilitiesScreen() {
   const route = useRoute<AvailabilitiesScreenRouteProp>();
   const { motive, site } = route.params;
 
-  const [modalVisible, setModalVisible] = useState(false);
-
   // Generate 14 days of 30-min slots
   const slots = useMemo(() => {
     const generated: { id: string; datetime: string; available: boolean }[] =

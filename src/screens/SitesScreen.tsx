@@ -74,7 +74,7 @@ export default function SitesScreen() {
               style={styles.modal.modalClose}
               onPress={() => setModalVisible(false)}
             >
-              <Text style={styles.modal.modalTextWhite}>Close</Text>
+              <Text style={styles.modal.modalTextClose}>Close</Text>
             </TouchableOpacity>
           </View>
         </View>

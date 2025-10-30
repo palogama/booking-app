@@ -8,7 +8,7 @@ import {
 } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../App";
-import Summary from "../components/summary";
+import Summary from "../components/Summary";
 import { styles } from "../styles/global";
 import NavigationButtons from "../components/NavigationButtons";
 
@@ -37,11 +37,9 @@ export default function ConfirmBookingScreen() {
 
   return (
     <View style={styles.layout.container}>
-      <View>
-        <Text style={styles.text.confirm}>
-          You've been assigned a practitioner for your appointment.
-        </Text>
-      </View>
+      <Text style={styles.text.confirm}>
+        You've been assigned a practitioner for your appointment.
+      </Text>
       <Text style={styles.text.title}>You're about to book:</Text>
       <Summary site={site} slot={slot} motive={motive} />
 

@@ -25,7 +25,7 @@ const CancelBookingModal: React.FC<CancelBookingModalProps> = ({
 
           <View style={styles.buttons}>
             <TouchableOpacity
-              style={[styles.button, { backgroundColor: "#88354A" }]}
+              style={[styles.button, { backgroundColor: "#f394acff" }]}
               onPress={onCancel}
             >
               <Text style={{ color: "white" }}>No</Text>
