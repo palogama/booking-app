@@ -1,13 +1,13 @@
 import React from "react";
-import { View, Text, Button, TouchableOpacity } from "react-native";
+import { View, Text, TouchableOpacity } from "react-native";
 import { RouteProp, useNavigation, useRoute } from "@react-navigation/native";
 import { RootStackParamList } from "../../App";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import Summary from "../components/Summary";
 import { styles } from "../styles/global";
+import StateWrapper from "../components/StateWrapper";
 
 type SuccessScreenRouteProp = RouteProp<RootStackParamList, "Success">;
-
 type SuccessScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   "Success"
@@ -18,18 +18,27 @@ export default function SuccessScreen() {
   const navigation = useNavigation<SuccessScreenNavigationProp>();
   const { site, slot, motive } = route.params;
 
+  const loading = false;
+  const error: string | null = null;
+
   return (
-    <View style={styles.layout.container}>
-      <Text style={styles.text.title}>You have booked:</Text>
+    <StateWrapper
+      loading={loading}
+      error={error}
+      data={[{ site, slot, motive }]}
+    >
+      <View style={styles.layout.container}>
+        <Text style={styles.text.title}>You have booked:</Text>
 
-      <Summary site={site} slot={slot} motive={motive} />
+        <Summary site={site} slot={slot} motive={motive} />
 
-      <TouchableOpacity
-        style={[styles.button.confirmButton]}
-        onPress={() => navigation.navigate("Home")}
-      >
-        <Text style={styles.button.text}>Back to Home</Text>
-      </TouchableOpacity>
-    </View>
+        <TouchableOpacity
+          style={[styles.button.confirmButton]}
+          onPress={() => navigation.navigate("Home")}
+        >
+          <Text style={styles.button.text}>Back to Home</Text>
+        </TouchableOpacity>
+      </View>
+    </StateWrapper>
   );
 }

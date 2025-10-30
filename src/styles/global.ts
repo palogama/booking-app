@@ -5,6 +5,8 @@ import { textStyles } from "./textStyles";
 import { modalStyles } from "./modalStyles";
 import { buttonStyles } from "./buttonStyles";
 import { availabilitiesStyles } from "./availabilitiesStyles";
+import { stateWrapperStyles } from "./stateWrapperStyles";
+
 
 
 
@@ -14,6 +16,7 @@ export const styles = {
   modal: modalStyles,
   button: buttonStyles,
   availabilities: availabilitiesStyles,
+  state:stateWrapperStyles,
 };
 
 

@@ -1,11 +1,6 @@
 import React from "react";
-import {
-  View,
-  Text,
-  ActivityIndicator,
-  StyleSheet,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, ActivityIndicator, TouchableOpacity } from "react-native";
+import { styles } from "../styles/global";
 
 type Props = {
   loading: boolean;
@@ -24,21 +19,24 @@ const StateWrapper: React.FC<Props> = ({
 }) => {
   if (loading) {
     return (
-      <View style={styles.center}>
+      <View style={styles.state.center}>
         <ActivityIndicator size="large" color="#fd5353ff" />
-        <Text style={styles.loadingText}>Loading your booking...</Text>
+        <Text style={styles.state.loadingText}>Loading your booking...</Text>
       </View>
     );
   }
 
   if (error) {
     return (
-      <View style={styles.center}>
-        <Text style={styles.errorText}>{error}</Text>
+      <View style={styles.state.center}>
+        <Text style={styles.state.errorText}>{error}</Text>
 
         {onRetry && (
-          <TouchableOpacity style={styles.primaryButton} onPress={onRetry}>
-            <Text style={styles.primaryButtonText}>Try Again</Text>
+          <TouchableOpacity
+            style={styles.state.primaryButton}
+            onPress={onRetry}
+          >
+            <Text style={styles.state.primaryButtonText}>Try Again</Text>
           </TouchableOpacity>
         )}
       </View>
@@ -47,8 +45,8 @@ const StateWrapper: React.FC<Props> = ({
 
   if (data && data.length === 0) {
     return (
-      <View style={styles.center}>
-        <Text style={styles.emptyText}>No results found</Text>
+      <View style={styles.state.center}>
+        <Text style={styles.state.emptyText}>No results found</Text>
       </View>
     );
   }
@@ -57,46 +55,3 @@ const StateWrapper: React.FC<Props> = ({
 };
 
 export default StateWrapper;
-
-const styles = StyleSheet.create({
-  center: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 24,
-    backgroundColor: "#ffffff",
-  },
-
-  loadingText: {
-    marginTop: 12,
-    fontSize: 16,
-    color: "#555",
-  },
-
-  errorText: {
-    marginBottom: 18,
-    fontSize: 18,
-    fontWeight: "600",
-    color: "#fd5353ff",
-    textAlign: "center",
-  },
-
-  emptyText: {
-    fontSize: 18,
-    color: "#666",
-  },
-
-  primaryButton: {
-    paddingVertical: 12,
-    paddingHorizontal: 22,
-    backgroundColor: "#fd5353ff",
-    borderRadius: 12,
-    elevation: 2,
-  },
-
-  primaryButtonText: {
-    color: "#fff",
-    fontSize: 16,
-    fontWeight: "600",
-  },
-});

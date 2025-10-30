@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import {
   RouteProp,
@@ -11,6 +11,7 @@ import { RootStackParamList } from "../../App";
 import Summary from "../components/Summary";
 import { styles } from "../styles/global";
 import NavigationButtons from "../components/NavigationButtons";
+import StateWrapper from "../components/StateWrapper";
 
 type ConfirmBookingScreenRouteProp = RouteProp<
   RootStackParamList,
@@ -26,6 +27,21 @@ export default function ConfirmBookingScreen() {
   const navigation = useNavigation<ConfirmBookingScreenNavigationProp>();
   const { site, slot, motive } = route.params;
 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Simulate practitioner assignment delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      // simulate random error 10% of the time
+      if (Math.random() < 0.1) {
+        setError("Failed to assign practitioner. Please try again.");
+      }
+      setLoading(false);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
   const handleConfirm = () => {
     navigation.dispatch(
       CommonActions.reset({
@@ -36,23 +52,30 @@ export default function ConfirmBookingScreen() {
   };
 
   return (
-    <View style={styles.layout.container}>
-      <Text style={styles.text.confirm}>
-        You've been assigned a practitioner for your appointment.
-      </Text>
-      <Text style={styles.text.title}>You're about to book:</Text>
-      <Summary site={site} slot={slot} motive={motive} />
+    <StateWrapper
+      loading={loading}
+      error={error}
+      data={[{ site, slot, motive }]}
+      onRetry={() => setLoading(true)}
+    >
+      <View style={styles.layout.container}>
+        <Text style={styles.text.confirm}>
+          You've been assigned a practitioner for your appointment.
+        </Text>
+        <Text style={styles.text.title}>You're about to book:</Text>
+        <Summary site={site} slot={slot} motive={motive} />
 
-      <TouchableOpacity
-        style={[styles.button.confirmButton]}
-        onPress={handleConfirm}
-      >
-        <Text style={styles.button.text}>Confirm</Text>
-      </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.button.confirmButton}
+          onPress={handleConfirm}
+        >
+          <Text style={styles.button.text}>Confirm</Text>
+        </TouchableOpacity>
 
-      <View style={styles.layout.footer}>
-        <NavigationButtons />
+        <View style={styles.layout.footer}>
+          <NavigationButtons />
+        </View>
       </View>
-    </View>
+    </StateWrapper>
   );
 }
