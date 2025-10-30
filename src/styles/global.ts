@@ -1,5 +1,3 @@
-
-import { StyleSheet } from "react-native";
 import { layoutStyles } from "./layoutStyles";
 import { textStyles } from "./textStyles";
 import { modalStyles } from "./modalStyles";

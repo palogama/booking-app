@@ -1,11 +1,11 @@
 import React from "react";
 import { render } from "@testing-library/react-native";
-import Summary from "../components/Summary";
+import Summary from "../src/components/Summary";
 
 describe("Summary component", () => {
   beforeAll(() => {
     // mock Math.random so the practitioner choice is predictable
-    jest.spyOn(Math, "random").mockReturnValue(0); // always pick first practitioner
+    jest.spyOn(Math, "random").mockReturnValue(0);
   });
 
   afterAll(() => {
@@ -27,7 +27,6 @@ describe("Summary component", () => {
       <Summary site={mockSite} slot={mockSlot} motive={mockMotive} />
     );
 
-    // ✅ Because Math.random() is mocked, practitioner = "Dr. Mock"
     expect(getByText("Practitioner:")).toBeTruthy();
     expect(getByText("Dr. Mock")).toBeTruthy();
 

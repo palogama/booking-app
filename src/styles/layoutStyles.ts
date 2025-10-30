@@ -3,12 +3,12 @@ import { StyleSheet } from "react-native";
 
 export const layoutStyles = StyleSheet.create({
 
-    containerCenter: {
+  containerCenter: {
   flex: 1,
   justifyContent: "center",
   alignItems: "center",
-
-},
+  },
+  
    container: {
     flex: 1,
     padding: 20,

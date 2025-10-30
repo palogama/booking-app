@@ -5,6 +5,8 @@ import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParamList } from "../../App";
 import { styles } from "../styles/global";
 
+//Go Back button
+
 const GoBackButton: React.FC<{}> = () => {
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();

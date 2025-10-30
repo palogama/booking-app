@@ -31,6 +31,7 @@ Trade-offs:
 - Practitioners assigned randomly for a given site.
 - Navigation stack reset on booking confirmation or cancellation for logical flow.
 - No Nx workspace used to move faster; would be considered for larger, multi-app projects.
+- I used React Native UI components instead of creating new ones from scratch to simplify the process.
 
 ---
 
@@ -38,8 +39,8 @@ Improvements with more time:
 
 - I'd use the staging API provided in the file. 
 - I wasn't able to run the test because the latest Expo + React Native version is ahead of Jest support. I tried resolving version conflicts but I didn't have time to make it work: with more time, I’d solve this and add a navigation test.
--I'd implement basic accesibility: font scaling and readable labels, as accessibility is something I give special importance to.
--In addition, if I had to redo the project, I'd put extra attention on maintaining organized and well explained GitHub commits.
+- I'd implement basic accesibility: font scaling and readable labels, as accessibility is something I give special importance to.
+- In addition, if I had to redo the project, I'd put extra attention on maintaining organized and well explained GitHub commits.
 
 ---
 
@@ -56,7 +57,6 @@ Practitioner: {name:string}
 The time slots were generated dynamically: 08:00–19:00, 14 days, 30-min intervals. This was done in the Availabilities screen file. 30% of slots were randomly marked unavailable.
 
 After having selected a motive, a site and a time slot, a practitioner is randomly assigned between those existing in the chosen site. 
-
 
 ---
 

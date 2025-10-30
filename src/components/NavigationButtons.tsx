@@ -4,6 +4,8 @@ import GoBackButton from "../components/GoBackButton";
 import { View } from "react-native";
 import { styles } from "../styles/global";
 
+//Display with the 2 buttons that appear during the navigation: goBack and cancelBooking
+
 const NavigationButtons = () => {
   return (
     <View style={styles.button.footerButtons}>
